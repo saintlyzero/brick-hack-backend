@@ -21,17 +21,18 @@ One of the main benefits of OOP is its ability to promote code reuse and modular
 However, OOP is not without its drawbacks. One potential issue with OOP is the potential for classes to become too complex and difficult to maintain. Additionally, the use of inheritance can sometimes lead to overly complex and convoluted class hierarchies.
 Despite these potential drawbacks, OOP remains a popular and widely used programming paradigm, especially in larger and more complex software projects. Its focus on modularity, encapsulation, and reuse can lead to more maintainable and scalable code, making it a valuable tool for many developers."""
 
+from keys import API_KEY
 
-co = cohere.Client('eiV4sSVdyKoduU9IXZRelSDP8LOjjQnfwY3TMEN5')
+co = cohere.Client(API_KEY)
 response = co.generate(
-  model='command-xlarge-20221108',
-  prompt=f'Create timeline from: {prompt}',
-  max_tokens=200,
-  temperature=0,
-  k=0,
-  p=1,
-  frequency_penalty=0,
-  presence_penalty=0,
-  stop_sequences=[],
-  return_likelihoods='NONE')
+    model='command-xlarge-20221108',
+    prompt=f'Create timeline from: {prompt}',
+    max_tokens=200,
+    temperature=0,
+    k=0,
+    p=1,
+    frequency_penalty=0,
+    presence_penalty=0,
+    stop_sequences=[],
+    return_likelihoods='NONE')
 print(f'Result: {response.generations[0].text}')
