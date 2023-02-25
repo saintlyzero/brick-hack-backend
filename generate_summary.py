@@ -5,14 +5,7 @@ import cohere
 
 
 def generate_summary(co):
-    response = co.summarize(
-        model='summarize-xlarge',
-        text=OOP,
-        length='long',
-        extractiveness='medium',
-        temperature=0.25
-    )
-    return response
+    return co.summarize(model='summarize-xlarge', text=OOP, length='long', extractiveness='medium', temperature=0.25)
 
 
 def main():
