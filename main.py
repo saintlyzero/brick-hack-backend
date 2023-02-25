@@ -6,7 +6,7 @@ from keys import API_KEY
 co = cohere.Client(API_KEY)
 response = co.generate(
     model='medium',
-    prompt=f'Write an outline for: {OS_CN}',
+    prompt=f'Extract the concepts from: {OS_CN}',
     max_tokens=200,
     temperature=0,
     k=0,

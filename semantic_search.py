@@ -56,7 +56,7 @@ def query_pinecone(co, index):
     query1 = "Where there any announcements in the lecture?"
     query2 = "When are the office hours?"
     query3 = "What is an OS?"
-    query4 = "What are the topics in there?"
+    query4 = "What are concepts?"
     # create the query embedding
     xq = co.embed(
         texts=[query4],
