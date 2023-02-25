@@ -4,6 +4,7 @@ import pinecone
 from data import OS_CN, OOP
 from keys import PINE_KEY, API_KEY
 
+
 def init():
     co = cohere.Client(API_KEY)
     pinecone.init(
@@ -12,10 +13,11 @@ def init():
     )
     return co
 
+
 def create_index(co, index_name):
     embeds = co.embed(
         texts=OS_CN.split('.'),
-        model='small',
+        model='large',
         truncate='None'
     ).embeddings
     shape = np.array(embeds).shape
@@ -43,6 +45,7 @@ def upsert_data(embeds, shape, index_name):
 
     return index
 
+
 def main():
     co = init()
     index = create_and_store(co)
@@ -53,14 +56,15 @@ def query_pinecone(co, index):
     query1 = "Where there any announcements in the lecture?"
     query2 = "When are the office hours?"
     query3 = "What is an OS?"
+    query4 = "What are the topics in there?"
     # create the query embedding
     xq = co.embed(
-        texts=[query2],
-        model='small',
+        texts=[query4],
+        model='large',
         truncate='None'
     ).embeddings
     # query, returning the top 10 most similar results
-    res = index.query(xq, top_k=3, include_metadata=True)
+    res = index.query(xq, top_k=5, include_metadata=True)
     print(res)
 
 
@@ -72,5 +76,3 @@ def create_and_store(co):
 
 if __name__ == '__main__':
     main()
-
-

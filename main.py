@@ -5,8 +5,8 @@ from keys import API_KEY
 
 co = cohere.Client(API_KEY)
 response = co.generate(
-    model='command-xlarge-20221108',
-    prompt=f'Create timeline from: {OOP}',
+    model='medium',
+    prompt=f'Write an outline for: {OS_CN}',
     max_tokens=200,
     temperature=0,
     k=0,
