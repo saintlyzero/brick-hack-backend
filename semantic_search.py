@@ -54,17 +54,16 @@ def main():
 
 def query_pinecone(co, index):
     query1 = "Where there any announcements in the lecture?"
-    query2 = "When are the office hours?"
-    query3 = "What is an OS?"
-    query4 = "What are concepts?"
+    # query2 = "When are the office hours?"
+    # query3 = "What is an OS?"
+    # query4 = "What are concepts?"
     # create the query embedding
     xq = co.embed(
-        texts=[query4],
+        texts=[query1],
         model='large',
         truncate='None'
     ).embeddings
-    # query, returning the top 10 most similar results
-    res = index.query(xq, top_k=5, include_metadata=True)
+    res = index.query(xq, top_k=2, include_metadata=True)
     print(res)
 
 
