@@ -42,3 +42,8 @@ def index(_):
     create_dummy_objects()
     lectures = Lecture.objects.values()
     return JsonResponse(list(lectures), safe=False)
+
+
+def lecture(request):
+    id_ = request.GET['id']
+

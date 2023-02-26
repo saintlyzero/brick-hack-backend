@@ -12,5 +12,13 @@ class Lecture(models.Model):
     def __str__(self):
         return f'Lecture:{self.Name}\nProfessor:{self.professor}\nDate:{self.date}\n'
 
-    def get_all(self):
-        pass
+
+class Feature(models.Model):
+    lecture = models.ForeignKey(Lecture, on_delete=models.CASCADE)
+    summary = models.TextField
+    outline = models.TextField
+    quiz = models.TextField
+    announcements = models.TextField
+
+    def __str__(self):
+        return f'{self.outline}'
